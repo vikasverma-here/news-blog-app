@@ -3,8 +3,10 @@ import News from './component/News'
 
 const App = () => {
   return (
-    <div>
+    <div className='container' >
+     <div className='news-blog-app' >
      <News/>
+     </div>
     </div>
   )
 }
