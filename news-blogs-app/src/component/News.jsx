@@ -3,6 +3,12 @@ import Weather from './weather'
 import Calander from './calander'
 import './news.css'
 import userimage from '../assets/images/user.jpg'
+import techImg from '../assets/images/tech.jpg'
+import healthImg from '../assets/images/health.jpg'
+import nationImg from '../assets/images/nation.jpg'
+import scienceImg from '../assets/images/science.jpg'
+import sportsImg from '../assets/images/sports.jpg'
+import worrldImg from '../assets/images/world.jpg'
 const News = () => {
   return (
    <div className="news">
@@ -42,8 +48,51 @@ const News = () => {
         </nav>
       </div>
       <div className="news-section">
-        <div className="headline">Headline</div>
-        <div className="news-grid">News Grid</div>
+        <div className="headline">
+          <img src={techImg} alt="headline image" />
+          <h2 className="headline-title">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, suscipit.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+          </h2>
+        </div>
+        <div className="news-grid">
+          <div className="news-grid-item">
+            <img src={scienceImg} alt="news image" />
+            <h3>Lorem ipsum dolor sit amet.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+            </h3>
+          </div>
+          <div className="news-grid-item">
+            <img src={worrldImg} alt="news image" />
+            <h3>Lorem ipsum dolor sit amet.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+            </h3>
+          </div>
+          <div className="news-grid-item">
+            <img src={techImg} alt="news image" />
+            <h3>Lorem ipsum dolor sit amet.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+            </h3>
+          </div>
+          <div className="news-grid-item">
+            <img src={healthImg} alt="news image" />
+            <h3>Lorem ipsum dolor sit amet.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+            </h3>
+          </div>
+          <div className="news-grid-item">
+            <img src={sportsImg} alt="news image" />
+            <h3>Lorem ipsum dolor sit amet.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+            </h3>
+          </div>
+          <div className="news-grid-item">
+            <img src={nationImg} alt="news image" />
+            <h3>Lorem ipsum dolor sit amet.
+            <i className="fa-regular fa-bookmark bookmark"></i>
+            </h3>
+          </div>
+        </div>
       </div>
       <div className="my-blogs">My-blogs</div>
       <div className="weather-calender">
