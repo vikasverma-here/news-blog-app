@@ -9,3 +9,10 @@ width: 100%;
 height: 100%;
  
 }
+.calender{
+    width: 100%;
+    min-width: 28rem;
+    background-color: #111214;
+    border-radius: 1rem;
+    height: calc(55% - 2rem);
+}
