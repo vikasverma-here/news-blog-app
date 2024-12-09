@@ -1,15 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Weather from './weather'
 import Calander from './calander'
 import './news.css'
 import userimage from '../assets/images/user.jpg'
-import techImg from '../assets/images/tech.jpg'
-import healthImg from '../assets/images/health.jpg'
-import nationImg from '../assets/images/nation.jpg'
-import scienceImg from '../assets/images/science.jpg'
-import sportsImg from '../assets/images/sports.jpg'
-import worrldImg from '../assets/images/world.jpg'
+import noimg from '../assets/images/no-img.png'
+// import healthImg from '../assets/images/health.jpg'
+// import nationImg from '../assets/images/nation.jpg'
+// import scienceImg from '../assets/images/science.jpg'
+// import sportsImg from '../assets/images/sports.jpg'
+// import worrldImg from '../assets/images/world.jpg'
+import axios from   'axios'
 const News = () => {
+const [headline,setHeadline]=useState(null)
+const [news, setnews] = useState([])
+
+
+useEffect(() => {
+  const fetchnews =async()=>{
+    const  url = "https://gnews.io/api/v4/top-headlines?category=world&lang=en&apikey=be929c4a5dd97f0e52a4fbc856421894"
+    const response =  await axios.get(url)
+    const fetchednews  =  response.data.articles
+
+fetchednews.forEach((articles)=>{
+  if(!articles.image){
+    articles.image=noimg
+  }
+})
+
+    
+    setHeadline(fetchednews[0])
+    setnews(fetchednews.slice(1,7))
+    console.log(news)
+  }
+  fetchnews()
+}, [])
+
   return (
    <div className="news">
     <header className='news-header'>
@@ -48,21 +73,25 @@ const News = () => {
         </nav>
       </div>
       <div className="news-section">
-        <div className="headline">
-          <img src={techImg} alt="headline image" />
+        {headline &&( <div className="headline">
+          <img src={headline.image || noimg} alt={headline.title} />
           <h2 className="headline-title">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, suscipit.
+           {headline.title}
             <i className="fa-regular fa-bookmark bookmark"></i>
           </h2>
-        </div>
+        </div>)}
+       
         <div className="news-grid">
-          <div className="news-grid-item">
-            <img src={scienceImg} alt="news image" />
-            <h3>Lorem ipsum dolor sit amet.
+          {news.map((articles,index)=>(
+            <div key={index} className="news-grid-item">
+            <img src={articles.image || noimg} alt={articles.title} />
+            <h3>{articles.title}
             <i className="fa-regular fa-bookmark bookmark"></i>
             </h3>
           </div>
-          <div className="news-grid-item">
+          ))}
+          
+          {/* <div className="news-grid-item">
             <img src={worrldImg} alt="news image" />
             <h3>Lorem ipsum dolor sit amet.
             <i className="fa-regular fa-bookmark bookmark"></i>
@@ -91,7 +120,7 @@ const News = () => {
             <h3>Lorem ipsum dolor sit amet.
             <i className="fa-regular fa-bookmark bookmark"></i>
             </h3>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="my-blogs">My-blogs</div>
